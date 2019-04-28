@@ -1,0 +1,33 @@
+name: UHC
+author: Sithey
+version: 1.0
+main: fr.sithey.uhc.Main
+commands:
+  saveinv:
+  savedeath:
+  specialsc:
+  htp:
+  hgamemode:
+  hstop:
+  hsay:
+  hchat:
+  hvote:
+  hforce:
+  hkick:
+  hrez:
+  hscoreboard:
+  hmaxplayers:
+  hwhitelist:
+  oui:
+  non:
+  helpop:
+  scenario:
+  whitelist:
+  sethost:
+  rules:
+    aliases:
+      - uhc
+      - config
+  taupe:
+  reveal:
+  kit:
