@@ -1,6 +1,7 @@
 package fr.sithey.uhc.gui;
 
 import fr.sithey.uhc.Main;
+import fr.sithey.uhc.scenarios.special.TaupeGunGUI;
 import fr.sithey.uhc.tasks.Start;
 import fr.sithey.uhc.utils.api.CustomInventory;
 import fr.sithey.uhc.utils.api.DeathInventoryAPI;
@@ -50,6 +51,8 @@ public class Configuration implements CustomInventory, Listener, CommandExecutor
         slots[21] = new ItemCreator(Material.SLIME_BALL).setName("§6Démarrage").getItem();
         slots[23] = new ItemCreator(Material.WOOL).setName("§6Commandes").setDurability(5).getItem();
         slots[25] = new ItemCreator(Material.NAME_TAG).setName((!Bukkit.getServer().hasWhitelist() ? "§a" : "§c") + "Whitelist").getItem();
+        slots[26] = new ItemCreator(Material.TNT).setName("§6Configuration TaupeGun").getItem();
+
         return () -> slots;
     }
 
@@ -176,6 +179,10 @@ public class Configuration implements CustomInventory, Listener, CommandExecutor
                 }else{
                     inventairedeath.giveforInv(player);
                 }
+                break;
+
+            case TNT:
+                Main.getInstance().gui.open(player, TaupeGunGUI.class);
                 break;
         }
     }

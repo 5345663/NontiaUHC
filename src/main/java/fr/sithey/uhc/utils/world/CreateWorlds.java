@@ -54,7 +54,7 @@ public class CreateWorlds {
                 Main.getInstance().isPregen = true;
                 try {
                     if (Main.getInstance().isPregen) {
-                        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new WorldLoarder(Bukkit.getWorld("world"), 500, 500, 0), 0L, 145L);
+                        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new WorldLoarder(Bukkit.getWorld("world"), 1000, 1000, 0), 0L, 400);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

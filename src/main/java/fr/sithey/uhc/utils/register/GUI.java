@@ -7,6 +7,7 @@ import fr.sithey.uhc.gui.scenarios.Scenarios;
 import fr.sithey.uhc.gui.teams.TC1;
 import fr.sithey.uhc.gui.teams.TC2;
 import fr.sithey.uhc.gui.teams.TC3;
+import fr.sithey.uhc.scenarios.special.TaupeGunGUI;
 import fr.sithey.uhc.utils.api.CustomInventory;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -52,6 +53,7 @@ public class GUI {
 		addMenu(new Scenarios());
 		addMenu(new fr.sithey.uhc.gui.scenarios.Special());
 		addMenu(new Team());
+		addMenu(new TaupeGunGUI());
 
 		}
 }
