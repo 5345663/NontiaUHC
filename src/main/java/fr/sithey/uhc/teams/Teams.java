@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public enum Teams {
+    SUPERTAUPE("§4","SuperTaupe ", 10, 0, false, DyeColor.GREEN),
     TAUPE("§4","Taupe ", 10, 0, false, DyeColor.GREEN),
     TEAM1("§c","♠ ", 10, 1, false, DyeColor.RED),
     TEAM2("§b","♠ ", 11, 1, false, DyeColor.BLUE),

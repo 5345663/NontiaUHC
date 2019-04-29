@@ -74,4 +74,7 @@ public class Games {
     public int taupetime = 15 * 60;
     public ArrayList<UUID> taupe = new ArrayList<>();
     public ArrayList<UUID> kitcmd = new ArrayList<>();
+    public boolean supertaupe = false;
+    public boolean supertaupecandeath = false;
+    public UUID uuidsupertaupe = null;
 }

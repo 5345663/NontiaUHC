@@ -28,11 +28,11 @@ public class Scatter extends BukkitRunnable {
     public ArrayList<Player> players;
 
     public Scatter() {
-        this.playertp = new ArrayList<String>();
+        this.playertp = new ArrayList<>();
         this.b = (int) (Bukkit.getWorld("world").getWorldBorder().getSize() - 5);
         this.oktp = true;
         this.j = true;
-        this.players = new ArrayList<Player>();
+        this.players = new ArrayList<>();
     }
 
     public void run() {

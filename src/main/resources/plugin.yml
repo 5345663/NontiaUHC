@@ -1,7 +1,8 @@
-name: UHC
+name: NontiaUHC
 author: Sithey
 version: 1.0
 main: fr.sithey.uhc.Main
+depend: [WorldEdit]
 commands:
   saveinv:
   savedeath:

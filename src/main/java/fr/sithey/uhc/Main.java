@@ -51,7 +51,6 @@ public class Main extends JavaPlugin {
         new Listeners().registerEvents();
         new Commandes().registerCommands();
         setStatus(Status.PREGEN);
-        new CreateWorlds().createWorlds();
         new Border().createBorder();
         for (Player p : Bukkit.getOnlinePlayers()) {
             Bukkit.getPluginManager().callEvent(new PlayerJoinEvent(p, null));
@@ -74,8 +73,11 @@ public class Main extends JavaPlugin {
         }, 0L, 10L);
 
         teamsManager.createTeams();
+        new CreateWorlds().createWorlds();
+
     }
 
+    //NIWAREESTMOCHE
     @Override
     public void onDisable() {
         teamsManager.deleteTeams();
@@ -101,7 +103,7 @@ public class Main extends JavaPlugin {
     public boolean isLobby() {
         return isStatus(Status.ATTENTE) || isStatus(Status.TP);
     }
-    public Location spawn() { return  new Location(Bukkit.getWorld("spawn"), 0.5 , 150, 0.5);}
+    public Location spawn() { return  new Location(Bukkit.getWorld("world"), 0, 200, 0);}
 
 
 }

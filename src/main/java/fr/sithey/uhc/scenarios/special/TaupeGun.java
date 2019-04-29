@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
 import java.util.UUID;
@@ -39,6 +40,27 @@ public class TaupeGun extends Scenarios implements Listener, CommandExecutor {
                     Main.getInstance().games.prefix + "/reveal | se reveal en tant que taupe.");
             Title.sendTitle(Bukkit.getPlayer(taupe), 5, 20, 5, Main.getInstance().games.prefix, "§4Vous etes la taupe !");
         }
+
+        if (Main.getInstance().games.supertaupe) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (Main.getInstance().games.taupe.isEmpty()) {
+                        return;
+                    }
+                    Random random = new Random();
+                    int r = random.nextInt(Main.getInstance().games.taupe.size());
+                    Main.getInstance().games.uuidsupertaupe = Main.getInstance().games.taupe.get(r);
+                    Bukkit.getPlayer(Main.getInstance().games.uuidsupertaupe).sendMessage(Main.getInstance().games.prefix + "Vous etes la supertaupe !\n" +
+                            "\n" +
+                            Main.getInstance().games.prefix + "Commandes:\n" +
+                            Main.getInstance().games.prefix + "/ec | utiliser votre kit de taupe.\n" +
+                            Main.getInstance().games.prefix + "/superreveal | se reveal en tant que taupe.");
+                    Title.sendTitle(Bukkit.getPlayer(Main.getInstance().games.uuidsupertaupe), 5, 20, 5, Main.getInstance().games.prefix, "§4Vous etes la supertaupe !");
+                    Main.getInstance().games.supertaupecandeath = true;
+                }
+            }.runTaskLaterAsynchronously(Main.getInstance(), 5 * 20 * 60);
+        }
     }
 
 
@@ -49,7 +71,7 @@ public class TaupeGun extends Scenarios implements Listener, CommandExecutor {
 
     @Override
     public void activate(Player player) {
-        player.sendMessage("§6 - /specialsc taupe <" + Main.getInstance().games.taupetime / 60 + ">(minutes)");
+            player.sendMessage("§6 - /specialsc taupe <" + Main.getInstance().games.taupetime / 60 + ">(minutes) <" + Main.getInstance().games.supertaupe +"> (supertaupes ? true:false)");
         Bukkit.getServer().getPluginManager().registerEvents(this, Main.getInstance());
     }
 
@@ -93,6 +115,23 @@ public class TaupeGun extends Scenarios implements Listener, CommandExecutor {
                         players.playSound(players.getLocation(), Sound.ENDERDRAGON_HIT, 2F, 1F);
                     }
                     Main.getInstance().teamsManager.addPlayer(Teams.TAUPE, player);
+                    Win.checkDeath();
+                    Win.checkWin();
+                }
+            }
+        }
+
+        if (player.getUniqueId() == Main.getInstance().games.uuidsupertaupe) {
+            if (cmd.getName().equalsIgnoreCase("ec")) {
+                player.openInventory(player.getEnderChest());
+            }
+            if (cmd.getName().equalsIgnoreCase("superreveal")) {
+                if (!Teams.getTeamWithPlayer(player).getName().equals(Teams.SUPERTAUPE.getName())) {
+                    Bukkit.broadcastMessage(Main.getInstance().games.prefix + "§4Le joueur §c§o§l" + player.getName() + " §4viens de se §6§l§oreveal SUPERTAUPE!");
+                    for (Player players : Bukkit.getOnlinePlayers()) {
+                        players.playSound(players.getLocation(), Sound.ENDERDRAGON_HIT, 2F, 1F);
+                    }
+                    Main.getInstance().teamsManager.addPlayer(Teams.SUPERTAUPE, player);
                     Win.checkDeath();
                     Win.checkWin();
                 }

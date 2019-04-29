@@ -20,9 +20,9 @@ public class Death implements Listener {
         Player killer = player.getKiller();
         String message = event.getDeathMessage();
         event.setDeathMessage("");
-        for (Player players : Bukkit.getOnlinePlayers()) {
-       //     players.playSound(players.getLocation(), Sound.WITHER_SPAWN, 2F, 1F);
-        }
+        if (main.games.uuidsupertaupe == player.getUniqueId())
+            main.games.uuidsupertaupe = null;
+
         DeathInventoryAPI inventairedeath = new DeathInventoryAPI(player, null);
         inventairedeath.dropInvent();
         main.games.alive.remove(player.getUniqueId());

@@ -20,7 +20,7 @@ public class Scoreboard {
         sb.create();
         sb.setLine(11, "§8§m------- §6Infos §8§m-------");
         sb.setLine(10, "§eMap : §b" + ((int) Bukkit.getWorld("world").getWorldBorder().getSize()) / 2 + " / " + ((int) Bukkit.getWorld("world").getWorldBorder().getSize()) / 2);
-        sb.setLine(9, "§eJoueurs : §b" + Main.getInstance().games.alive.size() + " / " + Main.getInstance().games.maxplayers + (Main.getInstance().games.maxparteams == 1 ? "" : " §8(" + (Main.getInstance().games.teams.size() != 0 ? Main.getInstance().games.teams.size() : "0") + ") " + (Teams.getTeamWithPlayer(player) == null ? "" : Teams.getTeamWithPlayer(player).getColor() + Teams.getTeamWithPlayer(player).getName())));
+        sb.setLine(9, "§eJoueurs : §b" + Main.getInstance().games.alive.size() + " / " + Main.getInstance().games.maxplayers + (Main.getInstance().games.maxparteams == 1 ? "" : " §8(" + (Main.getInstance().games.teams.size() != 0 ? Main.getInstance().games.teams.size() : "0") + ")"));
         sb.setLine(8, "§8§m------- §6Timer §8§m-------");
         sb.setLine(7, "§eTemps : §b" + (Main.getInstance().timers.GameTime <= 0 ? "00:00 " : Main.getInstance().timers.GameTime / 60 + ":" + new SimpleDateFormat("ss").format(Main.getInstance().timers.GameTime * 1000)));
         sb.setLine(6, "§ePvP : §b" + (Main.getInstance().timers.PvPTimer <= 0 ? "§aactivé " : Main.getInstance().timers.PvPTimer / 60 + ":" +new SimpleDateFormat("ss").format(Main.getInstance().timers.PvPTimer * 1000)));
@@ -38,7 +38,7 @@ public class Scoreboard {
             public void run() {
                 sb.setObjectiveName(Main.getInstance().games.scoreboard);
                 sb.setLine(10, "§eMap : §b" + ((int) Bukkit.getWorld("world").getWorldBorder().getSize()) / 2 + " / " + ((int) Bukkit.getWorld("world").getWorldBorder().getSize()) / 2);
-                sb.setLine(9, "§eJoueurs : §b" + Main.getInstance().games.alive.size() + " / " + Main.getInstance().games.maxplayers + (Main.getInstance().games.maxparteams == 1 ? "" : " §8(" + (Main.getInstance().games.teams.size() != 0 ? Main.getInstance().games.teams.size() : "0") + ") " + (Teams.getTeamWithPlayer(player) == null ? "" : Teams.getTeamWithPlayer(player).getColor() + Teams.getTeamWithPlayer(player).getName())));
+                sb.setLine(9, "§eJoueurs : §b" + Main.getInstance().games.alive.size() + " / " + Main.getInstance().games.maxplayers + (Main.getInstance().games.maxparteams == 1 ? "" : " §8(" + (Main.getInstance().games.teams.size() != 0 ? Main.getInstance().games.teams.size() : "0") + ")"));
                 sb.setLine(7, "§eTemps : §b" + (Main.getInstance().timers.GameTime <= 0 ? "00:00 " : Main.getInstance().timers.GameTime / 60 + ":" + new SimpleDateFormat("ss").format(Main.getInstance().timers.GameTime * 1000)));
                 sb.setLine(6, "§ePvP : §b" + (Main.getInstance().timers.PvPTimer <= 0 ? "§aactivé " : Main.getInstance().timers.PvPTimer / 60 + ":" +new SimpleDateFormat("ss").format(Main.getInstance().timers.PvPTimer * 1000)));
                 sb.setLine(5, "§eBordure : §b" + (Main.getInstance().timers.BorderTimer <= 0 ? "§aactivé " : Main.getInstance().timers.BorderTimer / 60 + ":" +new SimpleDateFormat("ss").format(Main.getInstance().timers.BorderTimer * 1000)));

@@ -179,8 +179,11 @@ public class Start extends BukkitRunnable {
             for (Teams team : Teams.values()) {
                 if (team.getSize() == 0)
                     team.toogleDeath();
-                if (GuiScenarioEnum.TAUPEGUN.isEnabled() && Teams.TAUPE.getDeath() && team.getName().equalsIgnoreCase(Teams.TAUPE.getName()))
+                if (GuiScenarioEnum.TAUPEGUN.isEnabled() && Teams.TAUPE.getDeath() && team.getName().equalsIgnoreCase(Teams.TAUPE.getName())) {
                     team.toogleDeath();
+                    if (main.games.supertaupe)
+                        Teams.SUPERTAUPE.toogleDeath();
+                }
                 if (!team.getDeath()) {
                     if (!(main.games.teams.contains(team))) {
                         main.games.teams.add(team);

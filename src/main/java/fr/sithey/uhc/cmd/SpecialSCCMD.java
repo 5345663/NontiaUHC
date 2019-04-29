@@ -17,7 +17,7 @@ public class SpecialSCCMD implements CommandExecutor {
         if (player.isOp() || Main.getInstance().games.host == player.getUniqueId()) {
             if (args.length == 0)
                 player.sendMessage("§cConfiguration des scenarios :" +
-                        "\n§6 - /specialsc taupe <"+ main.games.taupetime / 60+">(minutes)"+
+                        "\n§6 - /specialsc taupe <" + Main.getInstance().games.taupetime / 60 + ">(minutes) <" + Main.getInstance().games.supertaupe +"> (supertaupes ? true:false)"+
                         "\n§6 - /specialsc diamondless <" + main.games.diamondkill + ">" +
                         "\n§6 - /specialsc skyhigh <" + main.games.skyhigh / 60 + ">(minutes) <" + main.games.skydamage + ">  <" + main.games.skydtime / 20 + ">" +
                         "\n§6 - /specialsc nocleanup <" + main.games.healclean + ">" +
@@ -29,11 +29,6 @@ public class SpecialSCCMD implements CommandExecutor {
                         "\n§6 - /specialsc netheribus <" + main.games.nethertime / 60 + ">(minutes) <" + main.games.overdamage + ">  <" + main.games.overdtime / 20 + ">");
 
             if (args.length == 2) {
-                if (args[0].equalsIgnoreCase("taupe")){
-                    int i = Integer.parseInt(args[1]) * 60;
-                    main.games.taupetime = i;
-                    player.sendMessage(main.games.prefix + "§8Votre demande viens d'etre enregistrer ! §e--> §f" + i / 60);
-                }
                 if (args[0].equalsIgnoreCase("diamondless")) {
                     int i = Integer.parseInt(args[1]);
                     main.games.diamondkill = i;
@@ -70,6 +65,17 @@ public class SpecialSCCMD implements CommandExecutor {
                     player.sendMessage(main.games.prefix + "§8Votre demande viens d'etre enregistrer ! §e--> §f" + i);
                 }
             }
+
+            if (args.length == 3){
+                if (args[0].equalsIgnoreCase("taupe")){
+                    int i = Integer.parseInt(args[1]) * 60;
+                    boolean a = Boolean.parseBoolean(args[2]);
+                    main.games.taupetime = i;
+                    main.games.supertaupe = a;
+                    player.sendMessage(main.games.prefix + "§8Votre demande viens d'etre enregistrer ! §e--> §f" + i / 60 + " et " + a);
+                }
+            }
+
             if (args.length == 4) {
                 if (args[0].equalsIgnoreCase("skyhigh")) {
                     int a = Integer.parseInt(args[1]);
