@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'UHCTemplate'
+version '1.0-SNAPSHOT'
+
+jar.setDestinationDir(new File("D:\\Developpement\\Server\\Test\\plugins"))
+compileJava.options.encoding = 'UTF-8'
+
+sourceCompatibility = 1.8
+
+configurations {
+    extraLibs
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+dependencies {
+    compile files('D:\\Developpement\\Server\\Test\\spigot.jar')
+    compile files('D:\\Developpement\\Utils\\worldedit-bukkit-6.1.9.jar')
+
+    extraLibs group: 'com.jcraft', name: 'jsch', version: '0.1.53'
+
+    configurations.compile.extendsFrom(configurations.extraLibs)
+}
+
+jar {
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
