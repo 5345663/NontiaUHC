@@ -5,6 +5,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 
+import java.util.Collections;
+import java.util.Random;
+
 public class TeamsManager {
     private Main main = Main.getInstance();
 
@@ -46,6 +49,7 @@ public class TeamsManager {
     }
 
     public void randomTeam(Player player){
+        Collections.shuffle(main.games.alive, new Random(2));
         for (Teams teams : Teams.values()){
             if (teams.getSize() < main.games.maxparteams && main.games.maxparteams != 1 && !teams.getName().equals(Teams.TAUPE.getName())) {
                     addPlayer(teams, player);

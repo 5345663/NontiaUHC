@@ -15,8 +15,8 @@ public class Games {
     public List<Player> vote = new ArrayList<>();
     public ArrayList<Teams> teams = new ArrayList<>();
     public UUID host = UUID.randomUUID();
-    public String prefix = "§8(§fUHC§8) §e§l|§f ";
-    public String scoreboard = "§cUHC";
+    public String prefix = "§8(§eNontiaUHC§8) §e§l|§f ";
+    public String scoreboard = "§cNontiaUHC";
     public int maxplayers = 50;
     public int maxparteams = 1;
     public int bordertime = 600;

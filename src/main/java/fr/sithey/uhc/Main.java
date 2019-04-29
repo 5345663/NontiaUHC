@@ -36,7 +36,6 @@ public class Main extends JavaPlugin {
     public TeamsManager teamsManager;
     public boolean isPregen = false;
 
-
     @Override
     public void onEnable() {
         instance = this;

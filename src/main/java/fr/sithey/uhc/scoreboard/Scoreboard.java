@@ -33,7 +33,7 @@ public class Scoreboard {
             sb.setLine(2, "§eCentre : §b\u2b06 ");
         }
         sb.setLine(1, "§8§m----------------");
-        sb.setLine(0, "§eelasia.uhcserv.eu");
+        sb.setLine(0, "§6play.nontia.fr");
         Bukkit.getServer().getScheduler().runTaskTimer(Main.getInstance(), new Runnable() {
             public void run() {
                 sb.setObjectiveName(Main.getInstance().games.scoreboard);
