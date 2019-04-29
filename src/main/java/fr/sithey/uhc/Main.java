@@ -76,8 +76,6 @@ public class Main extends JavaPlugin {
         new CreateWorlds().createWorlds();
 
     }
-
-    //NIWAREESTMOCHE
     @Override
     public void onDisable() {
         teamsManager.deleteTeams();
